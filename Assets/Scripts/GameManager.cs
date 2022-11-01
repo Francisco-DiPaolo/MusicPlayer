@@ -3,15 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void PlayScene()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneManager.LoadScene("SPrincipal");
     }
 }
