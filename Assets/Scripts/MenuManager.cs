@@ -11,11 +11,16 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        volumeMax = 100;
-        sliderVolume.value = PlayerPrefs.GetFloat("volume", volumeMax);
+        GetValue();
+    }
 
+    void GetValue()
+    {
+        volumeMax = 1;
+        sliderVolume.value = PlayerPrefs.GetFloat("volume", 0.5f);
         toggleVolume.isOn = GetBoolMute();
     }
+
     public void PlayScene()
     {
         SceneManager.LoadScene("SPrincipal");

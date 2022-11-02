@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderVolume: {fileID: 2143496618}
   toggleVolume: {fileID: 1854946355}
-  volumeMax: 0
+  volumeMax: 1
 --- !u!1 &1605816764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 120393683}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:

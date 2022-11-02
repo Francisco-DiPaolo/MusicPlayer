@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+   AudioSource audioSource;
+
+    private void Awake()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        SetVolume();
+        SetMute();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetVolume()
     {
-        
+        audioSource.volume = PlayerPrefs.GetFloat("volume");
+        Debug.Log(PlayerPrefs.GetFloat("volume"));
+        Debug.Log(audioSource.volume);
+    }
+
+    void SetMute()
+    {
+        audioSource.volume = PlayerPrefs.GetFloat("mute");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SetVolume();
+        }
     }
 }
