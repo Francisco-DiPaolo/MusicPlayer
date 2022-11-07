@@ -17,8 +17,8 @@ public class MenuManager : MonoBehaviour
     void GetValue()
     {
         volumeMax = 1;
-        sliderVolume.value = PlayerPrefs.GetFloat("volume", 0.5f);
-        toggleVolume.isOn = GetBoolMute();
+        sliderVolume.value = PlayerPrefs.GetFloat("volume", volumeMax = 1);
+        toggleVolume.isOn = PlayerPrefs.GetFloat("mute", 0) == 1;
     }
 
     public void PlayScene()
@@ -31,17 +31,8 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("volume", sliderVolume.value);
     }
 
-    public bool GetBoolMute()
-    {
-        if (PlayerPrefs.GetFloat("mute") == 1)
-        {
-            return true;
-        }
-        else return false;
-    }
-
     public void MuteVolume()
     {
-        PlayerPrefs.SetFloat("mute", (toggleVolume ? 1 : 0));
+        PlayerPrefs.SetFloat("mute", (toggleVolume.isOn ? 1 : 0));
     }
 }
