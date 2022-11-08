@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bce9b39dbe12c24bbca5fb9fb93b1c9, type: 3}
   m_Name: Subtitle 6
   m_EditorClassIdentifier: 
-  time: 44
+  time: 44.5
   duration: 5.5
   lyrics: Oh, you let your feet run wild

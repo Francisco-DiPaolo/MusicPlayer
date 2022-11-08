@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bce9b39dbe12c24bbca5fb9fb93b1c9, type: 3}
   m_Name: Subtitle 26
   m_EditorClassIdentifier: 
-  time: 218
-  duration: 6
+  time: 178
+  duration: 5
   lyrics: Yeah

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bce9b39dbe12c24bbca5fb9fb93b1c9, type: 3}
   m_Name: Subtitle 5
   m_EditorClassIdentifier: 
-  time: 37
+  time: 37.5
   duration: 7
   lyrics: Way down we go

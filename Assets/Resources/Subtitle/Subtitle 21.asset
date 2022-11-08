@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bce9b39dbe12c24bbca5fb9fb93b1c9, type: 3}
   m_Name: Subtitle 21
   m_EditorClassIdentifier: 
-  time: 190
-  duration: 3
+  time: 150
+  duration: 5
   lyrics: Oh baby, yeah

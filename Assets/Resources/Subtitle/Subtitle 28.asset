@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bce9b39dbe12c24bbca5fb9fb93b1c9, type: 3}
   m_Name: Subtitle 28
   m_EditorClassIdentifier: 
-  time: 270
+  time: 190
   duration: 6
   lyrics: Oh way down we go

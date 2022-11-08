@@ -1,38 +1,34 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 public class AudioManager : MonoBehaviour
 {
-    AudioSource audioSource;
+    public AudioSource audioSource;
     public Text subtitleText;
     public SubtitleClass[] subtitleArray;
+    public float saveTime;
 
-    private int index;
-    private float timeLine;
+    private int _index;
+    private float _duration;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         SetVolume();
         SetMute();
+        SetMusicTime();
+
+        audioSource.Play();
     }
 
     public void Start()
     {
-        index = 0;
-        StartDialogue();
+        _index = 0;
+        StartCoroutine(Subtitle(0));
+        InvokeRepeating("PlaySoundSpecificTime", 0, saveTime);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Debug.Log(Time.time);
-        }
-    }
     void SetVolume()
     {
         audioSource.volume = PlayerPrefs.GetFloat("volume");
@@ -47,34 +43,49 @@ public class AudioManager : MonoBehaviour
         else audioSource.mute = false;
     }
 
-    void StartDialogue()
+    void SetMusicTime()
     {
-        StartCoroutine(Subtitle(0));
+        audioSource.time = PlayerPrefs.GetFloat("MusicTime", 0);
+    }
+
+    public void PlaySoundSpecificTime()
+    {
+        PlayerPrefs.SetFloat("MusicTime", audioSource.time);
     }
 
     void NextLyrics(float time)
     {
-        SubtitleClass nextSubtitle = subtitleArray[index];
+        SubtitleClass subtitle = subtitleArray[_index];
+        SubtitleClass nextSubtitle = subtitleArray[_index + 1];
 
-        subtitleText.text = (nextSubtitle != null && nextSubtitle.duration >= time - subtitleArray[index + 1].time) ? nextSubtitle.lyrics : "";
-
-        timeLine = subtitleArray[index].duration;
-
-        float duration;
-
-        if (nextSubtitle != null)
+        if (subtitle != null)
         {
-            duration = nextSubtitle.time + nextSubtitle.duration - time;
-        }
-        else duration = 0.1f;
+            if (nextSubtitle.latest)
+            {
+                _duration = audioSource.clip.length - audioSource.time;
+                _index = 0;
+            }
+            else _duration = nextSubtitle.time - audioSource.time;
 
-        StartCoroutine(Subtitle(duration));
-        index++;
+            subtitleText.text = subtitle.lyrics;
+        }
+
+        if (!nextSubtitle.latest)
+        {
+            _index++;
+        }
+
+        StartCoroutine(Subtitle(_duration));
     }
 
     IEnumerator Subtitle(float time)
     {
         yield return new WaitForSeconds(time);
         NextLyrics(audioSource.time);
+    }
+
+    public void ReturnScene(string nameScene)
+    {
+        SceneManager.LoadScene(nameScene);
     }
 }

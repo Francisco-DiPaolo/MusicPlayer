@@ -4,6 +4,6 @@ using UnityEngine;
 public class SubtitleClass : ScriptableObject
 {
     public float time;
-    public float duration;
     public string lyrics;
+    public bool latest;
 }
